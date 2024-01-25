@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "superlists"
+version = "0.1.0"
+description = ""
+authors = ["Vincent Lo <lovincent536@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+selenium = "^4.17.2"
+django = "^5.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
