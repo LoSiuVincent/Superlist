@@ -19,7 +19,7 @@ class NewVistorTest(unittest.TestCase):
         # She notices To-Do in the title and the header of the page
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element(By.TAG_NAME, 'h1')
-        self.assertIn('To-Do', header_text)
+        self.assertIn('To-Do', header_text.text)
 
         # She is invited to enter a todo item right away
         inputbox = self.browser.find_element(By.ID, 'id_new_item')
@@ -35,7 +35,7 @@ class NewVistorTest(unittest.TestCase):
 
         table = self.browser.find_element(By.ID, 'id_list_table')
         rows = table.find_elements(By.TAG_NAME, 'tr')
-        self.assertTrue(any(row.text == '1: Buy peacock feathers' for row in rows))
+        self.assertTrue(any(row.text == '1: Buy peacock feathers' for row in rows), 'New item did not appear in the list')
 
         # There is another text box inviting her to enter another item.
         # She enters "Use peacock feathers to make a fly"
