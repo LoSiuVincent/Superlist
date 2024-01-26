@@ -2,7 +2,7 @@ runserver:
 	poetry run python manage.py runserver
 
 unit-test:
-	poetry run python manage.py test
+	poetry run python manage.py test lists
 
 functional-test:
 	poetry run python manage.py test functional_tests
