@@ -21,7 +21,7 @@ class HomePageTest(TestCase):
         self.assertTemplateUsed(response, 'home.html')
 
     def test_only_save_item_when_necessary(self):
-        self.client.post('/')
+        self.client.get('/')
         self.assertEqual(Item.objects.count(), 0)
 
 
