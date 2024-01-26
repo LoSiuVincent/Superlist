@@ -39,7 +39,6 @@ class NewVistorTest(unittest.TestCase):
         time.sleep(1)
 
         table = self.browser.find_element(By.ID, 'id_list_table')
-        rows = table.find_elements(By.TAG_NAME, 'tr')
         self.check_for_row_in_list_table('1: Buy peacock feathers')
 
         # There is another text box inviting her to enter another item.
@@ -51,7 +50,6 @@ class NewVistorTest(unittest.TestCase):
 
         # The page refreshes, and both items are shown on the list
         table = self.browser.find_element(By.ID, 'id_list_table')
-        rows = table.find_elements(By.TAG_NAME, 'tr')
         self.check_for_row_in_list_table('1: Buy peacock feathers')
         self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
 
