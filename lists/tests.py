@@ -24,24 +24,31 @@ class NewListTest(TestCase):
 
     def test_redirects_after_POST(self):
         response = self.client.post('/lists/new', data={'item_text': 'A new list item'})
-
-        self.assertRedirects(response, '/lists/the-only-list-in-the-world/')
+        
+        new_list = List.objects.first()
+        self.assertRedirects(response, f'/lists/{new_list.id}/')
 
 
 class ListViewTest(TestCase):
     def test_used_list_template(self):
-        response = self.client.get('/lists/the-only-list-in-the-world/')
+        list_ = List.objects.create()
+        response = self.client.get(f'/lists/{list_.id}/')
         self.assertTemplateUsed(response, 'list.html')
 
-    def test_display_all_list_items(self):
+    def test_display_only_items_for_that_list(self):
         list_ = List.objects.create()
         Item.objects.create(text='item 1', list=list_)
         Item.objects.create(text='item 2', list=list_)
+        other_list = List.objects.create()
+        Item.objects.create(text='other item 1', list=other_list)
+        Item.objects.create(text='other item 2', list=other_list)
 
-        response = self.client.get('/lists/the-only-list-in-the-world/')
+        response = self.client.get(f'/lists/{list_.id}/')
 
         self.assertContains(response, 'item 1')
         self.assertContains(response, 'item 2')
+        self.assertNotContains(response, 'other item 1')
+        self.assertNotContains(response, 'other item 2')
 
 
 class ListAndItemModelTest(TestCase):
