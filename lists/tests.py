@@ -20,6 +20,10 @@ class HomePageTest(TestCase):
         self.assertIn('A new list item', response.content.decode())
         self.assertTemplateUsed(response, 'home.html')
 
+    def test_only_save_item_when_necessary(self):
+        self.client.post('/')
+        self.assertEqual(Item.objects.count(), 0)
+
 
 class ItemModelTest(TestCase):
     def test_save_and_retrieve_item(self):
