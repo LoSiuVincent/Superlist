@@ -92,7 +92,7 @@ class NewVistorTest(LiveServerTestCase):
         inputbox = self.browser.find_element(By.ID, 'id_new_item')
         inputbox.send_keys('Buy milks')
         inputbox.send_keys(Keys.ENTER)
-        self.wait_for_row_in_list_table('Buy milks')
+        self.wait_for_row_in_list_table('1: Buy milks')
 
         # Francis gets his own unique URL
         francis_list_url = self.browser.current_url
