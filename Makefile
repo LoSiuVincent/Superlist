@@ -5,4 +5,4 @@ unit-test:
 	poetry run python manage.py test
 
 functional-test:
-	poetry run python tests/functional_tests.py
+	poetry run python manage.py test functional_tests
