@@ -10,4 +10,4 @@ functional-test:
 	poetry run python manage.py test functional_tests
 
 stage-functional-test:
-	STAGING_SERVER=superlists-staging.vl.eu poetry run python manage.py test functional_tests
+	STAGING_SERVER=ec2-3-27-169-52.ap-southeast-2.compute.amazonaws.com poetry run python manage.py test functional_tests
