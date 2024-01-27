@@ -1,8 +1,12 @@
 runserver:
 	poetry run python manage.py runserver 0.0.0.0:8000
 
-migrate:
+migrate: init
 	poetry run python manage.py migrate --noinput
+
+init:
+	poetry install
+	mkdir .database .static
 
 test: unit-test functional-test
 
