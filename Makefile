@@ -8,3 +8,6 @@ unit-test:
 
 functional-test:
 	poetry run python manage.py test functional_tests
+
+stage-functional-test:
+	STAGING_SERVER=superlists-staging.vl.eu poetry run python manage.py test functional_tests
